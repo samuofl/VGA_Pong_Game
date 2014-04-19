@@ -1,0 +1,1023 @@
+--------------------------------------------------------------------------------
+Release 14.6 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -filter
+C:/Users/Sam/Documents/FPGA/vgaPong_v2/iseconfig/filter.filter -intstyle ise -v
+3 -s 5 -n 3 -fastpaths -xml vgaPong.twx vgaPong.ncd -o vgaPong.twr vgaPong.pcf
+-ucf ucf_vgapong.ucf
+
+Design file:              vgaPong.ncd
+Physical constraint file: vgaPong.pcf
+Device,package,speed:     xc3s500e,vq100,-5 (PRODUCTION 1.27 2013-06-08)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+================================================================================
+Timing constraint: NET "Inst_pixel_clock/CLKIN_IBUFG" PERIOD = 31.25 ns HIGH 
+50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 component switching limit errors)
+ Minimum period is  10.000ns.
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: NET "Inst_pixel_clock/CLKIN_IBUFG" PERIOD = 31.25 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 21.250ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 31.250ns
+  Low pulse: 15.625ns
+  Low pulse limit: 5.000ns (Tdcmpw_CLKIN_25_50)
+  Physical resource: Inst_pixel_clock/DCM_SP_INST/CLKIN
+  Logical resource: Inst_pixel_clock/DCM_SP_INST/CLKIN
+  Location pin: DCM_X0Y1.CLKIN
+  Clock network: Inst_pixel_clock/CLKIN_IBUFG
+--------------------------------------------------------------------------------
+Slack: 21.250ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 31.250ns
+  High pulse: 15.625ns
+  High pulse limit: 5.000ns (Tdcmpw_CLKIN_25_50)
+  Physical resource: Inst_pixel_clock/DCM_SP_INST/CLKIN
+  Logical resource: Inst_pixel_clock/DCM_SP_INST/CLKIN
+  Location pin: DCM_X0Y1.CLKIN
+  Clock network: Inst_pixel_clock/CLKIN_IBUFG
+--------------------------------------------------------------------------------
+Slack: 27.615ns (period - min period limit)
+  Period: 31.250ns
+  Min period limit: 3.635ns (275.103MHz) (Tdcmpc)
+  Physical resource: Inst_pixel_clock/DCM_SP_INST/CLKIN
+  Logical resource: Inst_pixel_clock/DCM_SP_INST/CLKIN
+  Location pin: DCM_X0Y1.CLKIN
+  Clock network: Inst_pixel_clock/CLKIN_IBUFG
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: PERIOD analysis for net "Inst_pixel_clock/CLKFX_BUF" derived 
+from  NET "Inst_pixel_clock/CLKIN_IBUFG" PERIOD = 31.25 ns HIGH 50%;  
+multiplied by 1.28 to 40 nS and duty cycle corrected to HIGH 20 nS  
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 469446 paths analyzed, 1038 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  12.730ns.
+--------------------------------------------------------------------------------
+
+Paths for end point ball_y_velocity_5 (SLICE_X16Y62.CE), 2982 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     27.270ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_14 (FF)
+  Destination:          ball_y_velocity_5 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.705ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.025ns (0.066 - 0.091)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_14 to ball_y_velocity_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y28.YQ      Tcko                  0.567   ball_x_pos<15>
+                                                       ball_x_pos_14
+    SLICE_X37Y32.F4      net (fanout=8)        1.645   ball_x_pos<14>
+    SLICE_X37Y32.COUT    Topcyf                1.011   ball_y_velocity_add0000<14>
+                                                       ball_x_pos<14>_rt
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.COUT    Tbyp                  0.103   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.COUT    Tbyp                  0.103   ball_y_velocity_add0000<22>
+                                                       Madd_ball_y_velocity_add0000_cy<22>
+                                                       Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.Y       Tciny                 0.756   ball_y_velocity_add0000<24>
+                                                       Madd_ball_y_velocity_add0000_cy<24>
+                                                       Madd_ball_y_velocity_add0000_xor<25>
+    SLICE_X32Y37.G2      net (fanout=4)        0.839   ball_y_velocity_add0000<25>
+    SLICE_X32Y37.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y62.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y62.CLK     Tceck                 0.483   ball_y_velocity<5>
+                                                       ball_y_velocity_5
+    -------------------------------------------------  ---------------------------
+    Total                                     12.705ns (6.484ns logic, 6.221ns route)
+                                                       (51.0% logic, 49.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     27.391ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_0 (FF)
+  Destination:          ball_y_velocity_5 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.580ns (Levels of Logic = 20)
+  Clock Path Skew:      -0.029ns (0.066 - 0.095)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_0 to ball_y_velocity_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y22.YQ      Tcko                  0.567   ball_x_pos<1>
+                                                       ball_x_pos_0
+    SLICE_X37Y25.F2      net (fanout=8)        0.799   ball_x_pos<0>
+    SLICE_X37Y25.COUT    Topcyf                1.011   ball_y_velocity_add0000<0>
+                                                       Madd_ball_y_velocity_add0000_lut<0>_INV_0
+                                                       Madd_ball_y_velocity_add0000_cy<0>
+                                                       Madd_ball_y_velocity_add0000_cy<1>
+    SLICE_X37Y26.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<1>
+    SLICE_X37Y26.COUT    Tbyp                  0.103   ball_y_velocity_add0000<2>
+                                                       Madd_ball_y_velocity_add0000_cy<2>
+                                                       Madd_ball_y_velocity_add0000_cy<3>
+    SLICE_X37Y27.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<3>
+    SLICE_X37Y27.COUT    Tbyp                  0.103   ball_y_velocity_add0000<4>
+                                                       Madd_ball_y_velocity_add0000_cy<4>
+                                                       Madd_ball_y_velocity_add0000_cy<5>
+    SLICE_X37Y28.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<5>
+    SLICE_X37Y28.COUT    Tbyp                  0.103   ball_y_velocity_add0000<6>
+                                                       Madd_ball_y_velocity_add0000_cy<6>
+                                                       Madd_ball_y_velocity_add0000_cy<7>
+    SLICE_X37Y29.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<7>
+    SLICE_X37Y29.COUT    Tbyp                  0.103   ball_y_velocity_add0000<8>
+                                                       Madd_ball_y_velocity_add0000_cy<8>
+                                                       Madd_ball_y_velocity_add0000_cy<9>
+    SLICE_X37Y30.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<9>
+    SLICE_X37Y30.COUT    Tbyp                  0.103   ball_y_velocity_add0000<10>
+                                                       Madd_ball_y_velocity_add0000_cy<10>
+                                                       Madd_ball_y_velocity_add0000_cy<11>
+    SLICE_X37Y31.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<11>
+    SLICE_X37Y31.COUT    Tbyp                  0.103   ball_y_velocity_add0000<12>
+                                                       Madd_ball_y_velocity_add0000_cy<12>
+                                                       Madd_ball_y_velocity_add0000_cy<13>
+    SLICE_X37Y32.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<13>
+    SLICE_X37Y32.COUT    Tbyp                  0.103   ball_y_velocity_add0000<14>
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.COUT    Tbyp                  0.103   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.COUT    Tbyp                  0.103   ball_y_velocity_add0000<22>
+                                                       Madd_ball_y_velocity_add0000_cy<22>
+                                                       Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.Y       Tciny                 0.756   ball_y_velocity_add0000<24>
+                                                       Madd_ball_y_velocity_add0000_cy<24>
+                                                       Madd_ball_y_velocity_add0000_xor<25>
+    SLICE_X32Y37.G2      net (fanout=4)        0.839   ball_y_velocity_add0000<25>
+    SLICE_X32Y37.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y62.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y62.CLK     Tceck                 0.483   ball_y_velocity<5>
+                                                       ball_y_velocity_5
+    -------------------------------------------------  ---------------------------
+    Total                                     12.580ns (7.205ns logic, 5.375ns route)
+                                                       (57.3% logic, 42.7% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     27.457ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_14 (FF)
+  Destination:          ball_y_velocity_5 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.518ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.025ns (0.066 - 0.091)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_14 to ball_y_velocity_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y28.YQ      Tcko                  0.567   ball_x_pos<15>
+                                                       ball_x_pos_14
+    SLICE_X37Y32.F4      net (fanout=8)        1.645   ball_x_pos<14>
+    SLICE_X37Y32.COUT    Topcyf                1.011   ball_y_velocity_add0000<14>
+                                                       ball_x_pos<14>_rt
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.Y       Tciny                 0.756   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_xor<21>
+    SLICE_X32Y35.G2      net (fanout=4)        0.632   ball_y_velocity_add0000<21>
+    SLICE_X32Y35.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<21>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+    SLICE_X32Y36.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+    SLICE_X32Y36.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<22>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+    SLICE_X32Y37.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+    SLICE_X32Y37.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<24>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y62.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y62.CLK     Tceck                 0.483   ball_y_velocity<5>
+                                                       ball_y_velocity_5
+    -------------------------------------------------  ---------------------------
+    Total                                     12.518ns (6.504ns logic, 6.014ns route)
+                                                       (52.0% logic, 48.0% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ball_y_velocity_4 (SLICE_X16Y62.CE), 2982 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     27.270ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_14 (FF)
+  Destination:          ball_y_velocity_4 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.705ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.025ns (0.066 - 0.091)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_14 to ball_y_velocity_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y28.YQ      Tcko                  0.567   ball_x_pos<15>
+                                                       ball_x_pos_14
+    SLICE_X37Y32.F4      net (fanout=8)        1.645   ball_x_pos<14>
+    SLICE_X37Y32.COUT    Topcyf                1.011   ball_y_velocity_add0000<14>
+                                                       ball_x_pos<14>_rt
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.COUT    Tbyp                  0.103   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.COUT    Tbyp                  0.103   ball_y_velocity_add0000<22>
+                                                       Madd_ball_y_velocity_add0000_cy<22>
+                                                       Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.Y       Tciny                 0.756   ball_y_velocity_add0000<24>
+                                                       Madd_ball_y_velocity_add0000_cy<24>
+                                                       Madd_ball_y_velocity_add0000_xor<25>
+    SLICE_X32Y37.G2      net (fanout=4)        0.839   ball_y_velocity_add0000<25>
+    SLICE_X32Y37.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y62.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y62.CLK     Tceck                 0.483   ball_y_velocity<5>
+                                                       ball_y_velocity_4
+    -------------------------------------------------  ---------------------------
+    Total                                     12.705ns (6.484ns logic, 6.221ns route)
+                                                       (51.0% logic, 49.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     27.391ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_0 (FF)
+  Destination:          ball_y_velocity_4 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.580ns (Levels of Logic = 20)
+  Clock Path Skew:      -0.029ns (0.066 - 0.095)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_0 to ball_y_velocity_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y22.YQ      Tcko                  0.567   ball_x_pos<1>
+                                                       ball_x_pos_0
+    SLICE_X37Y25.F2      net (fanout=8)        0.799   ball_x_pos<0>
+    SLICE_X37Y25.COUT    Topcyf                1.011   ball_y_velocity_add0000<0>
+                                                       Madd_ball_y_velocity_add0000_lut<0>_INV_0
+                                                       Madd_ball_y_velocity_add0000_cy<0>
+                                                       Madd_ball_y_velocity_add0000_cy<1>
+    SLICE_X37Y26.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<1>
+    SLICE_X37Y26.COUT    Tbyp                  0.103   ball_y_velocity_add0000<2>
+                                                       Madd_ball_y_velocity_add0000_cy<2>
+                                                       Madd_ball_y_velocity_add0000_cy<3>
+    SLICE_X37Y27.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<3>
+    SLICE_X37Y27.COUT    Tbyp                  0.103   ball_y_velocity_add0000<4>
+                                                       Madd_ball_y_velocity_add0000_cy<4>
+                                                       Madd_ball_y_velocity_add0000_cy<5>
+    SLICE_X37Y28.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<5>
+    SLICE_X37Y28.COUT    Tbyp                  0.103   ball_y_velocity_add0000<6>
+                                                       Madd_ball_y_velocity_add0000_cy<6>
+                                                       Madd_ball_y_velocity_add0000_cy<7>
+    SLICE_X37Y29.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<7>
+    SLICE_X37Y29.COUT    Tbyp                  0.103   ball_y_velocity_add0000<8>
+                                                       Madd_ball_y_velocity_add0000_cy<8>
+                                                       Madd_ball_y_velocity_add0000_cy<9>
+    SLICE_X37Y30.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<9>
+    SLICE_X37Y30.COUT    Tbyp                  0.103   ball_y_velocity_add0000<10>
+                                                       Madd_ball_y_velocity_add0000_cy<10>
+                                                       Madd_ball_y_velocity_add0000_cy<11>
+    SLICE_X37Y31.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<11>
+    SLICE_X37Y31.COUT    Tbyp                  0.103   ball_y_velocity_add0000<12>
+                                                       Madd_ball_y_velocity_add0000_cy<12>
+                                                       Madd_ball_y_velocity_add0000_cy<13>
+    SLICE_X37Y32.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<13>
+    SLICE_X37Y32.COUT    Tbyp                  0.103   ball_y_velocity_add0000<14>
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.COUT    Tbyp                  0.103   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.COUT    Tbyp                  0.103   ball_y_velocity_add0000<22>
+                                                       Madd_ball_y_velocity_add0000_cy<22>
+                                                       Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.Y       Tciny                 0.756   ball_y_velocity_add0000<24>
+                                                       Madd_ball_y_velocity_add0000_cy<24>
+                                                       Madd_ball_y_velocity_add0000_xor<25>
+    SLICE_X32Y37.G2      net (fanout=4)        0.839   ball_y_velocity_add0000<25>
+    SLICE_X32Y37.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y62.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y62.CLK     Tceck                 0.483   ball_y_velocity<5>
+                                                       ball_y_velocity_4
+    -------------------------------------------------  ---------------------------
+    Total                                     12.580ns (7.205ns logic, 5.375ns route)
+                                                       (57.3% logic, 42.7% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     27.457ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_14 (FF)
+  Destination:          ball_y_velocity_4 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.518ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.025ns (0.066 - 0.091)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_14 to ball_y_velocity_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y28.YQ      Tcko                  0.567   ball_x_pos<15>
+                                                       ball_x_pos_14
+    SLICE_X37Y32.F4      net (fanout=8)        1.645   ball_x_pos<14>
+    SLICE_X37Y32.COUT    Topcyf                1.011   ball_y_velocity_add0000<14>
+                                                       ball_x_pos<14>_rt
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.Y       Tciny                 0.756   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_xor<21>
+    SLICE_X32Y35.G2      net (fanout=4)        0.632   ball_y_velocity_add0000<21>
+    SLICE_X32Y35.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<21>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+    SLICE_X32Y36.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+    SLICE_X32Y36.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<22>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+    SLICE_X32Y37.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+    SLICE_X32Y37.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<24>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y62.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y62.CLK     Tceck                 0.483   ball_y_velocity<5>
+                                                       ball_y_velocity_4
+    -------------------------------------------------  ---------------------------
+    Total                                     12.518ns (6.504ns logic, 6.014ns route)
+                                                       (52.0% logic, 48.0% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ball_y_velocity_7 (SLICE_X16Y63.CE), 2982 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     27.270ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_14 (FF)
+  Destination:          ball_y_velocity_7 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.705ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.025ns (0.066 - 0.091)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_14 to ball_y_velocity_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y28.YQ      Tcko                  0.567   ball_x_pos<15>
+                                                       ball_x_pos_14
+    SLICE_X37Y32.F4      net (fanout=8)        1.645   ball_x_pos<14>
+    SLICE_X37Y32.COUT    Topcyf                1.011   ball_y_velocity_add0000<14>
+                                                       ball_x_pos<14>_rt
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.COUT    Tbyp                  0.103   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.COUT    Tbyp                  0.103   ball_y_velocity_add0000<22>
+                                                       Madd_ball_y_velocity_add0000_cy<22>
+                                                       Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.Y       Tciny                 0.756   ball_y_velocity_add0000<24>
+                                                       Madd_ball_y_velocity_add0000_cy<24>
+                                                       Madd_ball_y_velocity_add0000_xor<25>
+    SLICE_X32Y37.G2      net (fanout=4)        0.839   ball_y_velocity_add0000<25>
+    SLICE_X32Y37.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y63.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y63.CLK     Tceck                 0.483   ball_y_velocity<7>
+                                                       ball_y_velocity_7
+    -------------------------------------------------  ---------------------------
+    Total                                     12.705ns (6.484ns logic, 6.221ns route)
+                                                       (51.0% logic, 49.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     27.391ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_0 (FF)
+  Destination:          ball_y_velocity_7 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.580ns (Levels of Logic = 20)
+  Clock Path Skew:      -0.029ns (0.066 - 0.095)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_0 to ball_y_velocity_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y22.YQ      Tcko                  0.567   ball_x_pos<1>
+                                                       ball_x_pos_0
+    SLICE_X37Y25.F2      net (fanout=8)        0.799   ball_x_pos<0>
+    SLICE_X37Y25.COUT    Topcyf                1.011   ball_y_velocity_add0000<0>
+                                                       Madd_ball_y_velocity_add0000_lut<0>_INV_0
+                                                       Madd_ball_y_velocity_add0000_cy<0>
+                                                       Madd_ball_y_velocity_add0000_cy<1>
+    SLICE_X37Y26.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<1>
+    SLICE_X37Y26.COUT    Tbyp                  0.103   ball_y_velocity_add0000<2>
+                                                       Madd_ball_y_velocity_add0000_cy<2>
+                                                       Madd_ball_y_velocity_add0000_cy<3>
+    SLICE_X37Y27.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<3>
+    SLICE_X37Y27.COUT    Tbyp                  0.103   ball_y_velocity_add0000<4>
+                                                       Madd_ball_y_velocity_add0000_cy<4>
+                                                       Madd_ball_y_velocity_add0000_cy<5>
+    SLICE_X37Y28.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<5>
+    SLICE_X37Y28.COUT    Tbyp                  0.103   ball_y_velocity_add0000<6>
+                                                       Madd_ball_y_velocity_add0000_cy<6>
+                                                       Madd_ball_y_velocity_add0000_cy<7>
+    SLICE_X37Y29.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<7>
+    SLICE_X37Y29.COUT    Tbyp                  0.103   ball_y_velocity_add0000<8>
+                                                       Madd_ball_y_velocity_add0000_cy<8>
+                                                       Madd_ball_y_velocity_add0000_cy<9>
+    SLICE_X37Y30.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<9>
+    SLICE_X37Y30.COUT    Tbyp                  0.103   ball_y_velocity_add0000<10>
+                                                       Madd_ball_y_velocity_add0000_cy<10>
+                                                       Madd_ball_y_velocity_add0000_cy<11>
+    SLICE_X37Y31.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<11>
+    SLICE_X37Y31.COUT    Tbyp                  0.103   ball_y_velocity_add0000<12>
+                                                       Madd_ball_y_velocity_add0000_cy<12>
+                                                       Madd_ball_y_velocity_add0000_cy<13>
+    SLICE_X37Y32.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<13>
+    SLICE_X37Y32.COUT    Tbyp                  0.103   ball_y_velocity_add0000<14>
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.COUT    Tbyp                  0.103   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<21>
+    SLICE_X37Y36.COUT    Tbyp                  0.103   ball_y_velocity_add0000<22>
+                                                       Madd_ball_y_velocity_add0000_cy<22>
+                                                       Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<23>
+    SLICE_X37Y37.Y       Tciny                 0.756   ball_y_velocity_add0000<24>
+                                                       Madd_ball_y_velocity_add0000_cy<24>
+                                                       Madd_ball_y_velocity_add0000_xor<25>
+    SLICE_X32Y37.G2      net (fanout=4)        0.839   ball_y_velocity_add0000<25>
+    SLICE_X32Y37.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y63.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y63.CLK     Tceck                 0.483   ball_y_velocity<7>
+                                                       ball_y_velocity_7
+    -------------------------------------------------  ---------------------------
+    Total                                     12.580ns (7.205ns logic, 5.375ns route)
+                                                       (57.3% logic, 42.7% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     27.457ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ball_x_pos_14 (FF)
+  Destination:          ball_y_velocity_7 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      12.518ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.025ns (0.066 - 0.091)
+  Source Clock:         vga_pixel_clock rising at 0.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ball_x_pos_14 to ball_y_velocity_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y28.YQ      Tcko                  0.567   ball_x_pos<15>
+                                                       ball_x_pos_14
+    SLICE_X37Y32.F4      net (fanout=8)        1.645   ball_x_pos<14>
+    SLICE_X37Y32.COUT    Topcyf                1.011   ball_y_velocity_add0000<14>
+                                                       ball_x_pos<14>_rt
+                                                       Madd_ball_y_velocity_add0000_cy<14>
+                                                       Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<15>
+    SLICE_X37Y33.COUT    Tbyp                  0.103   ball_y_velocity_add0000<16>
+                                                       Madd_ball_y_velocity_add0000_cy<16>
+                                                       Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<17>
+    SLICE_X37Y34.COUT    Tbyp                  0.103   ball_y_velocity_add0000<18>
+                                                       Madd_ball_y_velocity_add0000_cy<18>
+                                                       Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.CIN     net (fanout=1)        0.000   Madd_ball_y_velocity_add0000_cy<19>
+    SLICE_X37Y35.Y       Tciny                 0.756   ball_y_velocity_add0000<20>
+                                                       Madd_ball_y_velocity_add0000_cy<20>
+                                                       Madd_ball_y_velocity_add0000_xor<21>
+    SLICE_X32Y35.G2      net (fanout=4)        0.632   ball_y_velocity_add0000<21>
+    SLICE_X32Y35.COUT    Topcyg                0.984   Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_lut<21>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+    SLICE_X32Y36.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<21>
+    SLICE_X32Y36.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<22>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+    SLICE_X32Y37.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<23>
+    SLICE_X32Y37.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<24>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<25>
+    SLICE_X32Y38.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<26>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<27>
+    SLICE_X32Y39.COUT    Tbyp                  0.113   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<28>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.CIN     net (fanout=1)        0.000   Mcompar_ball_y_velocity_cmp_le0002_cy<29>
+    SLICE_X32Y40.COUT    Tbyp                  0.113   ball_y_velocity_cmp_le0002
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<30>
+                                                       Mcompar_ball_y_velocity_cmp_le0002_cy<31>
+    SLICE_X21Y68.G2      net (fanout=1)        2.011   ball_y_velocity_cmp_le0002
+    SLICE_X21Y68.Y       Tilo                  0.612   N13
+                                                       ball_y_velocity_not000319_SW0
+    SLICE_X18Y70.G4      net (fanout=1)        0.356   N13
+    SLICE_X18Y70.Y       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000319
+    SLICE_X18Y70.F4      net (fanout=1)        0.020   ball_y_velocity_not000319/O
+    SLICE_X18Y70.X       Tilo                  0.660   ball_y_velocity_not0003
+                                                       ball_y_velocity_not000355
+    SLICE_X16Y63.CE      net (fanout=16)       1.350   ball_y_velocity_not0003
+    SLICE_X16Y63.CLK     Tceck                 0.483   ball_y_velocity<7>
+                                                       ball_y_velocity_7
+    -------------------------------------------------  ---------------------------
+    Total                                     12.518ns (6.504ns logic, 6.014ns route)
+                                                       (52.0% logic, 48.0% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: PERIOD analysis for net "Inst_pixel_clock/CLKFX_BUF" derived from
+ NET "Inst_pixel_clock/CLKIN_IBUFG" PERIOD = 31.25 ns HIGH 50%;
+ multiplied by 1.28 to 40 nS and duty cycle corrected to HIGH 20 nS 
+
+--------------------------------------------------------------------------------
+
+Paths for end point movement_counter_18 (SLICE_X13Y63.F4), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.397ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               movement_counter_18 (FF)
+  Destination:          movement_counter_18 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.397ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         vga_pixel_clock rising at 40.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: movement_counter_18 to movement_counter_18
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y63.XQ      Tcko                  0.411   movement_counter<18>
+                                                       movement_counter_18
+    SLICE_X13Y63.F4      net (fanout=2)        0.290   movement_counter<18>
+    SLICE_X13Y63.CLK     Tckf        (-Th)    -0.696   movement_counter<18>
+                                                       movement_counter<18>_rt
+                                                       Mcount_movement_counter_xor<18>
+                                                       movement_counter_18
+    -------------------------------------------------  ---------------------------
+    Total                                      1.397ns (1.107ns logic, 0.290ns route)
+                                                       (79.2% logic, 20.8% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point movement_counter_30 (SLICE_X13Y69.F4), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.397ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               movement_counter_30 (FF)
+  Destination:          movement_counter_30 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.397ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         vga_pixel_clock rising at 40.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: movement_counter_30 to movement_counter_30
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y69.XQ      Tcko                  0.411   movement_counter<30>
+                                                       movement_counter_30
+    SLICE_X13Y69.F4      net (fanout=2)        0.290   movement_counter<30>
+    SLICE_X13Y69.CLK     Tckf        (-Th)    -0.696   movement_counter<30>
+                                                       movement_counter<30>_rt
+                                                       Mcount_movement_counter_xor<30>
+                                                       movement_counter_30
+    -------------------------------------------------  ---------------------------
+    Total                                      1.397ns (1.107ns logic, 0.290ns route)
+                                                       (79.2% logic, 20.8% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point movement_counter_22 (SLICE_X13Y65.F4), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.403ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               movement_counter_22 (FF)
+  Destination:          movement_counter_22 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.403ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         vga_pixel_clock rising at 40.000ns
+  Destination Clock:    vga_pixel_clock rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: movement_counter_22 to movement_counter_22
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y65.XQ      Tcko                  0.411   movement_counter<22>
+                                                       movement_counter_22
+    SLICE_X13Y65.F4      net (fanout=2)        0.296   movement_counter<22>
+    SLICE_X13Y65.CLK     Tckf        (-Th)    -0.696   movement_counter<22>
+                                                       movement_counter<22>_rt
+                                                       Mcount_movement_counter_xor<22>
+                                                       movement_counter_22
+    -------------------------------------------------  ---------------------------
+    Total                                      1.403ns (1.107ns logic, 0.296ns route)
+                                                       (78.9% logic, 21.1% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: PERIOD analysis for net "Inst_pixel_clock/CLKFX_BUF" derived from
+ NET "Inst_pixel_clock/CLKIN_IBUFG" PERIOD = 31.25 ns HIGH 50%;
+ multiplied by 1.28 to 40 nS and duty cycle corrected to HIGH 20 nS 
+
+--------------------------------------------------------------------------------
+Slack: 36.933ns (period - min period limit)
+  Period: 40.000ns
+  Min period limit: 3.067ns (326.052MHz) (Tdcmpfx)
+  Physical resource: Inst_pixel_clock/DCM_SP_INST/CLKFX
+  Logical resource: Inst_pixel_clock/DCM_SP_INST/CLKFX
+  Location pin: DCM_X0Y1.CLKFX
+  Clock network: Inst_pixel_clock/CLKFX_BUF
+--------------------------------------------------------------------------------
+Slack: 38.562ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 40.000ns
+  Low pulse: 20.000ns
+  Low pulse limit: 0.719ns (Tcl)
+  Physical resource: hcount<0>/CLK
+  Logical resource: hcount_0/CK
+  Location pin: SLICE_X48Y32.CLK
+  Clock network: vga_pixel_clock
+--------------------------------------------------------------------------------
+Slack: 38.562ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 40.000ns
+  High pulse: 20.000ns
+  High pulse limit: 0.719ns (Tch)
+  Physical resource: hcount<0>/CLK
+  Logical resource: hcount_0/CK
+  Location pin: SLICE_X48Y32.CLK
+  Clock network: vga_pixel_clock
+--------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Derived Constraints for Inst_pixel_clock/CLKIN_IBUFG
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|Inst_pixel_clock/CLKIN_IBUFG   |     31.250ns|     10.000ns|      9.945ns|            0|            0|            0|       469446|
+| Inst_pixel_clock/CLKFX_BUF    |     40.000ns|     12.730ns|          N/A|            0|            0|       469446|            0|
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |   12.730|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 469446 paths, 0 nets, and 2457 connections
+
+Design statistics:
+   Minimum period:  12.730ns{1}   (Maximum frequency:  78.555MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Wed Aug 28 12:42:39 2013 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 182 MB
+
+
+

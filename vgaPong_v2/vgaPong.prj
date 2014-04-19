@@ -1,0 +1,2 @@
+vhdl work "pixel_clock.vhd"
+vhdl work "vgaPong.vhd"

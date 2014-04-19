@@ -1,0 +1,24 @@
+NET vsync    LOC="P85"  | IOSTANDARD=LVTTL;                                # B0
+NET hsync    LOC="P83"  | IOSTANDARD=LVTTL;                                # B1
+NET BLUE(0)  LOC="P78"  | IOSTANDARD=LVTTL;                                # B2
+NET BLUE(1)  LOC="P71"  | IOSTANDARD=LVTTL;                                # B3
+NET GREEN(0) LOC="P68"  | IOSTANDARD=LVTTL;                                # B4
+NET GREEN(1) LOC="P66"  | IOSTANDARD=LVTTL;                                # B5
+NET GREEN(2) LOC="P63"  | IOSTANDARD=LVTTL;                                # B6
+NET RED(0)   LOC="P61"  | IOSTANDARD=LVTTL;                                # B7
+NET RED(1)   LOC="P58"  | IOSTANDARD=LVTTL;                                # B8
+NET RED(2)   LOC="P54"  | IOSTANDARD=LVTTL;                                # B9
+NET CLK          LOC="P89"  | IOSTANDARD=LVTTL | PERIOD=31.25ns;               # CLK
+NET LED(0)       LOC="P5"   | IOSTANDARD=LVTTL;                                # C8
+NET LED(1)       LOC="P9"   | IOSTANDARD=LVTTL;                                # C9
+NET LED(2)       LOC="P10"  | IOSTANDARD=LVTTL;                                # C10
+NET LED(3)       LOC="P11"  | IOSTANDARD=LVTTL;                                # C11
+NET LED(4)       LOC="P12"  | IOSTANDARD=LVTTL;                                # C12
+NET LED(5)       LOC="P15"  | IOSTANDARD=LVTTL;                                # C13
+NET LED(6)       LOC="P16"  | IOSTANDARD=LVTTL;                                # C14
+NET LED(7)       LOC="P17"  | IOSTANDARD=LVTTL;                                # C15
+NET JOY_RIGHT    LOC="P36"  | IOSTANDARD=LVTTL;                                # B11
+NET JOY_LEFT     LOC="P34"  | IOSTANDARD=LVTTL;                                # B12
+NET JOY_DOWN     LOC="P32"  | IOSTANDARD=LVTTL;                                # B13
+NET JOY_UP       LOC="P25"  | IOSTANDARD=LVTTL;                                # B14
+NET JOY_SELECT   LOC="P22"  | IOSTANDARD=LVTTL;                                # B15

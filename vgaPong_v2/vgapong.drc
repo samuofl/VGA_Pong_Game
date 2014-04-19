@@ -1,0 +1,11 @@
+Release 14.6 Drc P.68d (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Wed Aug 28 12:42:43 2013
+
+drc -z vgaPong.ncd vgaPong.pcf
+
+INFO:PhysDesignRules:772 - To achieve optimal frequency synthesis performance
+   with the CLKFX and CLKFX180 outputs of the DCM comp
+   Inst_pixel_clock/DCM_SP_INST, consult the device Interactive Data Sheet.
+DRC detected 0 errors and 0 warnings.
